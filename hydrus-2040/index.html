@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hydrus 2040</title>
+  <meta name="description" content="Hydrus 2040: follow the water. A space mission design game for NASA Space Apps Challenge 2026.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ 1. TITLE SCREEN ============ -->
+  <section id="screen-title" class="screen active">
+    <div class="title-bg"></div>
+    <div class="title-tint"></div>
+    <img class="drifter" src="assets/images/astronaut-floating.png" alt="">
+
+    <div class="title-box">
+      <div class="title-float">
+        <h1 class="game-title">HYDRUS <span>2040</span></h1>
+      </div>
+      <p class="game-subtitle">FOLLOW THE WATER</p>
+      <nav class="menu">
+        <button class="btn btn-main" id="btn-start">START MISSION</button>
+        <button class="btn" id="btn-credits">CREDITS</button>
+      </nav>
+    </div>
+
+    <footer class="title-footer">NASA Space Apps Challenge 2026 · Team Singularity Squad</footer>
+  </section>
+
+  <!-- ============ 2. INTRO COMIC ============ -->
+  <section id="screen-intro" class="screen">
+    <div class="stage" id="intro-stage">
+      <div class="panel-bg" id="panel-bg"></div>
+      <div class="panel-extra" id="panel-extra"></div>
+      <div class="caption" id="caption"></div>
+      <img class="hydrus" id="hydrus" src="assets/images/control-hydrus.png" alt="Control Hydrus, your mission guide">
+      <div class="bubble" id="bubble">
+        <b class="bubble-name">CONTROL HYDRUS</b>
+        <span id="bubble-text"></span>
+      </div>
+      <div class="dots" id="dots"></div>
+      <button class="btn-skip" id="btn-skip">Skip intro &#9656;&#9656;</button>
+      <button class="btn btn-main btn-next" id="btn-next">NEXT &#9656;</button>
+    </div>
+  </section>
+
+  <!-- ============ 3. CHOOSE YOUR DESTINATION ============ -->
+  <section id="screen-destinations" class="screen">
+    <div class="title-bg dim"></div>
+    <div class="title-tint"></div>
+
+    <header class="dest-header">
+      <button class="btn btn-small" id="dest-back">&#9666; Menu</button>
+      <div class="dest-heading">
+        <h2>CHOOSE YOUR DESTINATION</h2>
+        <div class="dest-guide">
+          <img src="assets/images/control-hydrus-face.png" alt="">
+          <p><b>CONTROL HYDRUS:</b> <span id="dest-guide-text"></span></p>
+        </div>
+      </div>
+    </header>
+
+    <div class="dest-cols" id="dest-cols"></div>
+
+    <div class="dest-bar">
+      <p id="dest-choice">Pick a world to continue.</p>
+      <button class="btn btn-main" id="dest-go" disabled>CONTINUE &#9656;</button>
+    </div>
+  </section>
+
+  <!-- Pop-up window (credits and messages) -->
+  <div class="modal hidden" id="modal">
+    <div class="modal-box">
+      <div id="modal-content"></div>
+      <button class="btn btn-main" id="modal-close">CLOSE</button>
+    </div>
+  </div>
+
+  <!-- Scripts: order matters -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/title.js"></script>
+  <script src="js/intro.js"></script>
+  <script src="js/destinations.js"></script>
+</body>
+</html>
