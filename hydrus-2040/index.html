@@ -70,6 +70,100 @@
     </div>
   </section>
 
+  <!-- ============ 4. HANGAR ============ -->
+  <!-- The hangar is drawn at 1920 x 1080 and scaled to fit any screen -->
+  <section id="screen-hangar" class="screen">
+    <div class="hg-stage" id="hg-stage">
+      <header class="hg-top">
+        <div class="hg-title"><h1>HANGAR</h1><small id="hg-sub"></small></div>
+        <div class="hg-meter" id="m-budget"></div>
+        <div class="hg-meter" id="m-weight"></div>
+        <div class="hg-meter" id="m-power"></div>
+        <div class="hg-meter" id="m-data"></div>
+        <div class="hg-btns"><button class="hg-help" id="hg-help" aria-label="Hangar tour">?</button><button class="hg-back" id="hg-back">&#9666; BACK</button></div>
+      </header>
+
+      <div class="hg-grid">
+        <div class="hg-left">
+          <section class="pn" id="p-rocket"><div class="pt">1 · CHOOSE YOUR ROCKET</div><div id="rocket-list"></div></section>
+          <section class="pn hg-fuel">
+            <div class="pt">FUEL LOAD <span>$1M per 10%</span></div>
+            <div class="fh"><b id="fuel-pct"></b><span id="fuel-dv"></span></div>
+            <input type="range" id="fuel-range" min="0" max="100" step="1" aria-label="Fuel load">
+            <div class="flab"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+            <p class="fnote"><b>Δv</b> = how much your rocket can change its speed. More fuel gives more Δv, but costs money. More weight on board gives less Δv.</p>
+          </section>
+        </div>
+
+        <section class="pn hg-bay">
+          <div class="pt">ASSEMBLY BAY <span id="bay-sub"></span></div>
+          <svg id="rocket-svg" viewBox="0 0 560 470" preserveAspectRatio="xMidYMid meet" aria-label="Your rocket"></svg>
+        </section>
+
+        <section class="pn" id="p-equip">
+          <div class="pt">2 · LOAD YOUR EQUIPMENT <span id="equip-sub"></span></div>
+          <div class="env" id="env"></div>
+          <div class="items" id="equip-list"></div>
+        </section>
+
+        <div class="hg-bottom">
+          <section class="pn" id="p-hazards"><div class="pt">3 · HAZARDS <span>what can go wrong, and what protects you</span></div><div class="hzs" id="hazards"></div></section>
+          <section class="pn" id="p-crew">
+            <div class="pt">4 · CREW STATIONS <span>Control Hydrus gives orders by station</span></div>
+            <div class="crew" id="crew-stations"></div>
+            <div class="hint"><img src="assets/images/control-hydrus-face.png" alt=""><div><b>CONTROL HYDRUS</b><p id="hint-text"></p></div></div>
+          </section>
+          <section class="pn hg-launch">
+            <div class="pt">MISSION READINESS</div>
+            <svg id="gauge" viewBox="0 0 300 170" width="270" aria-label="Mission readiness"></svg>
+            <div class="risk" id="risk-text"></div>
+            <ul class="blocked-list" id="blocked-list"></ul>
+            <button class="lb" id="launch-btn">LAUNCH &#9656;</button>
+          </section>
+        </div>
+      </div>
+
+      <!-- Guided tour by Control Hydrus (inside the hangar) -->
+      <div class="tour hidden" id="tour">
+        <div class="tour-spot" id="tour-spot"></div>
+        <div class="tour-box" id="tour-box">
+          <img src="assets/images/control-hydrus-face.png" alt="Control Hydrus">
+          <div class="tour-text">
+            <b>CONTROL HYDRUS <span id="tour-step"></span></b>
+            <p id="tour-msg"></p>
+            <div class="tour-btns">
+              <button class="tour-skip" id="tour-skip">Skip tour</button>
+              <button class="btn btn-main tour-next" id="tour-next">NEXT &#9656;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CREW WINDOW (before the hangar) ============ -->
+  <div class="modal crew-modal hidden" id="crew-modal">
+    <div class="crew-box">
+      <img class="cm-astro" src="assets/images/control-hydrus.png" alt="Control Hydrus">
+      <div class="cm-bubble"><b>CONTROL HYDRUS</b><span id="crew-question"></span></div>
+      <div class="cm-body" id="crew-body"></div>
+    </div>
+  </div>
+
+  <!-- ============ LAUNCH SUMMARY WINDOW ============ -->
+  <div class="modal summary-modal hidden" id="summary-modal">
+    <div class="mbx">
+      <div class="mbub"><b>CONTROL HYDRUS</b>Trip and equipment selected. Ready to launch, team?</div>
+      <img class="mch" src="assets/images/control-hydrus.png" alt="">
+      <h2>MISSION SUMMARY<small>Check everything before launch. You can't change your equipment in space.</small></h2>
+      <div class="sg" id="summary-grid"></div>
+      <div class="btns">
+        <button class="bb" id="sum-back">&#9666; BACK TO HANGAR</button>
+        <button class="bl" id="sum-go">CONFIRM LAUNCH &#9656;</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Pop-up window (credits and messages) -->
   <div class="modal hidden" id="modal">
     <div class="modal-box">
@@ -84,5 +178,8 @@
   <script src="js/title.js"></script>
   <script src="js/intro.js"></script>
   <script src="js/destinations.js"></script>
+  <script src="js/crew.js"></script>
+  <script src="js/hangar.js"></script>
+  <script src="js/tour.js"></script>
 </body>
 </html>

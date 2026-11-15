@@ -31,9 +31,8 @@ $('#dest-cols').addEventListener('click', (e) => {
 $('#dest-back').addEventListener('click', () => showScreen('title'));
 
 $('#dest-go').addEventListener('click', () => {
-  // The next part of the game (crew and hangar) goes here.
-  openModal(`<h3>${chosenDestination.name}: ${chosenDestination.title}</h3>
-    <p>Next part: your crew and the hangar. We build it next!</p>`);
+  GAME.destination = chosenDestination;
+  openCrewWindow();          // asks how many astronauts, then the hangar opens
 });
 
 SCREENS.destinations = {

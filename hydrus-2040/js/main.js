@@ -4,6 +4,15 @@
 
 const $ = (selector) => document.querySelector(selector);
 
+// Everything the players choose during the game is saved here.
+const GAME = {
+  destination: null,   // chosen planet (from DESTINATIONS)
+  players: [],         // crew names, in order (player 1, 2, 3, 4)
+  rocket: 'medium',    // chosen rocket id (from ROCKETS)
+  fuel: 50,            // fuel load in %
+  items: {}            // equipment on board: { solar: 2, rtg: 1, ... }
+};
+
 // Each screen can have an "enter" function that runs when it opens.
 const SCREENS = {};
 
